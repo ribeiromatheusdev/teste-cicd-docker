@@ -1,0 +1,19 @@
+@model IEnumerable<AppMvcTeste.Models.Produto>
+
+<h2>Lista de Produtos (Lendo do Postgres)</h2>
+<p><a href="/Produtos/Criar" class="btn btn-primary">Inserir Novo Produto</a></p>
+
+<table class="table">
+    <thead>
+        <tr><th>ID</th><th>Nome</th><th>Preço</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Nome</td>
+                <td>@item.Preco.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>

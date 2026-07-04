@@ -1,0 +1,14 @@
+@model AppMvcTeste.Models.Produto
+
+<h2>Inserir Produto no Banco</h2>
+<form action="/Produtos/Criar" method="post">
+    <div class="form-group">
+        <label>Nome do Produto</label>
+        <input name="Nome" class="form-control" required />
+    </div>
+    <div class="form-group" style="margin-top: 10px;">
+        <label>Preço</label>
+        <input name="Preco" type="number" step="0.01" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-success" style="margin-top: 15px;">Salvar no Postgres</button>
+</form>

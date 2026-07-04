@@ -1,0 +1,14 @@
+services:
+  #Container da sua Aplicação C# .NET 8 MVC
+  minha-app-mvc:
+    image: app-mvc-teste:latest
+    container_name: mvc_app_teste
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080" # Vamos acessar no navegador via http://localhost:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=host.docker.internal;Port=5432;Database=crud_teste_db;Username=admin;Password=
