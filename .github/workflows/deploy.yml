@@ -17,4 +17,4 @@ jobs:
       - name: Reconstruir imagem do C# e reiniciar container
         run: |
           docker compose build minha-app-mvc
-          docker compose up -d --no-deps minha-app-mvc
+          run: docker compose build minha-app-mvc && docker compose up -d --force-recreate minha-app-mvc
