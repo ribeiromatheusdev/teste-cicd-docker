@@ -1,6 +1,6 @@
 services:
   #Container do Banco de Dados PostgreSQL
-  meu-banco-postrgres:
+  meu-banco-postgres:
     image: postgres:16-alpine
     container_name: postgres_teste
     restart: always
