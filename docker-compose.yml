@@ -1,6 +1,20 @@
 services:
+  #Container do Banco de Dados PostgreSQL
+  meu-banco-postrgres:
+    image: postgres:16-alpine
+    container_name: postgres_teste
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=
+      - POSTGRES_DB=crud_teste_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_teste=/var/lib/postgresql/data
+
   #Container da sua Aplicação C# .NET 8 MVC
-  minha-app-mvc:
+  meu-app-mvc:
     image: app-mvc-teste:latest
     container_name: mvc_app_teste
     restart: always
@@ -11,4 +25,9 @@ services:
       - "8080:8080" # Vamos acessar no navegador via http://localhost:8080
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=host.docker.internal;Port=5432;Database=crud_teste_db;Username=admin;Password=
+      - ConnectionStrings__DefaultConnection=Host=localhost;Database=crud_teste_db;Username=admin;Password=
+    depends_on:
+      - meu-banco-postgres
+
+volumes:
+  postgres_data_teste:
